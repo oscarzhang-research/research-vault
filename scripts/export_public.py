@@ -293,6 +293,60 @@ def collect(vault: Path) -> tuple[list, list, list]:
     return notes, blocks, warns
 
 
+# 模型说明：文件名关键词 → (展示名, 一句话作用, 结构描述)
+MODEL_META = {
+    "sndk": ("SanDisk — three-scenario DCF",
+             "What SNDK is worth if the NAND price floor holds, softens, or breaks",
+             "3 scenarios · ~800 live formulas"),
+    "mu": ("Micron — three-scenario DCF",
+           "What MU is worth across the range of memory pricing outcomes",
+           "3 scenarios"),
+    "缺口": ("The arithmetic of the gap",
+             "Bit-level supply and demand — how wide the shortage is, and for how long",
+             "supply–demand bridge"),
+    "gap": ("The arithmetic of the gap",
+            "Bit-level supply and demand — how wide the shortage is, and for how long",
+            "supply–demand bridge"),
+}
+
+
+def scan_vault_models(vault: Path, site: Path) -> list:
+    """扫知识库的模型文件夹，把 xlsx 复制到公开站，并生成清单。"""
+    src = vault / "01_投资决策与前瞻" / "模型"
+    out = []
+    if not src.exists():
+        return out
+    dst = site / "models" / "files"
+    dst.mkdir(parents=True, exist_ok=True)
+    for f in sorted(src.glob("*.xls*")):
+        if f.name.startswith(("~$", ".")):
+            continue
+        low = f.stem.lower()
+        meta = None
+        for k, v in MODEL_META.items():
+            if k.lower() in low:
+                meta = v
+                break
+        name, purpose, shape = meta or (f.stem, "", "")
+        slug = re.sub(r"[^A-Za-z0-9]+", "-", f.stem).strip("-").lower() or "model"
+        target = dst / f"{slug}{f.suffix}"
+        try:
+            target.write_bytes(f.read_bytes())
+        except OSError as e:
+            print(f"  复制 {f.name} 失败：{e}")
+            continue
+        out.append({
+            "slug": slug,
+            "name": name,
+            "purpose": purpose,
+            "shape": shape,
+            "file": f"files/{target.name}",
+            "filename": f.name,
+            "size_kb": round(target.stat().st_size / 1024),
+        })
+    return out
+
+
 def scan_reports(site: Path) -> list:
     """扫 reports/<TICKER>/ 下的独立研报，生成覆盖清单。"""
     out = []
@@ -362,6 +416,7 @@ def main() -> int:
         print()
 
     reports = scan_reports(SITE)
+    models = scan_vault_models(vault, SITE)
     stats = {
         "notes": len(notes),
         "companies": len({t for n in notes for t in n["tickers"]}),
@@ -369,17 +424,18 @@ def main() -> int:
         "confirmed": sum(len(n["checks"]["confirmed"]) for n in notes),
         "falsified": sum(len(n["checks"]["falsified"]) for n in notes),
         "reports": sum(r["count"] for r in reports),
+        "models": len(models),
         "updated": dt.date.today().isoformat(),
     }
     print(f"统计：{stats['notes']} 篇 · {stats['companies']} 个标的 · "
           f"假设 {stats['open']} 待验证 / {stats['confirmed']} 已验证 / "
-          f"{stats['falsified']} 已证伪 · 研报 {stats['reports']} 篇")
+          f"{stats['falsified']} 已证伪 · 研报 {stats['reports']} 篇 · 模型 {stats['models']} 份")
 
     if a.check:
         print("\n--check 模式，没有写任何文件。")
         return 0
 
-    data = {"stats": stats, "notes": notes, "reports": reports}
+    data = {"stats": stats, "notes": notes, "reports": reports, "models": models}
     (SITE / "site.json").write_text(
         json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"\n结构化数据 → {SITE / 'site.json'}")

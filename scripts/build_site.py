@@ -97,7 +97,8 @@ def shell(title: str, body: str, depth: int = 0, lang_href: str = "",
 <body><div class="wrap">
 <header class="top">
   <a class="home" href="{up}index.html">{SITE_TITLE}</a>
-  <nav><a href="{up}coverage.html">Coverage</a><a href="{up}method.html">Method</a>
+  <nav><a href="{up}framework.html">Framework</a><a href="{up}models.html">Models</a>
+  <a href="{up}coverage.html">Coverage</a><a href="{up}method.html">Method</a>
   <a href="{GITHUB}">GitHub</a>{lang}</nav>
 </header>
 {body}
@@ -164,6 +165,103 @@ def note_page(n: dict, en: dict | None = None) -> str:
                  lang_href=href, lang_label="EN")
 
 
+
+# ── 研究框架：五层漏斗。改这里就同时改了首页简图和 framework 页 ──
+FUNNEL = [
+    ("Demand thesis", "The AI compute stack",
+     "Huang's layered framing of compute demand — the idea that AI spending is not one "
+     "market but a stack, and each layer pulls the one beneath it.",
+     "If the top of the stack keeps spending, the constraint moves down until it lands on "
+     "something physical."),
+    ("Where it binds", "HBM wafer penalty",
+     "Not the loudest bottleneck — the one that cannot be relieved by spending money faster. "
+     "Physical constraints outlast financial ones.",
+     "Memory, and HBM specifically. The same bit count consumes roughly 4× the wafer area, "
+     "and that is physics, not capex."),
+    ("Highest-rent link", "The memory makers",
+     "A bottleneck is not automatically profitable. The question is which link captures the "
+     "pricing power the shortage creates, and which merely passes it along.",
+     "The memory makers themselves, not the equipment vendors or the packagers. A handful of "
+     "players, no new entrant this cycle, and long-term agreements that put a floor under price."),
+    ("The names, on six axes", "MU · SNDK · Hynix · Samsung",
+     "Read each company on six dimensions — what the business actually sells, management's "
+     "execution record, moat depth and durability, growth runway, whether the valuation is "
+     "defensible, and the full risk picture. Not as a checklist, but to find which single "
+     "dimension decides the outcome.",
+     "For all four the deciding dimension turned out to be the same one — whether the pricing "
+     "floor holds — which is why the models spend most of their effort there."),
+    ("The deciding variable", "Does the price floor hold",
+     "Once the deciding variable is identified, the rest is arithmetic: build the model, state "
+     "the assumption, write down what would falsify it.",
+     "Supply and demand bit by bit — the gap arithmetic — plus a three-scenario DCF per name, "
+     "every assumption tied to a historical anchor and a falsification signal."),
+]
+
+SIX_AXES = ["What the business actually sells", "Management's execution record",
+            "Moat — depth and durability", "Growth runway",
+            "Whether the valuation is defensible", "The full risk picture"]
+
+
+def _funnel_strip() -> str:
+    """首页那条五格横条。"""
+    cells = "".join(
+        f'<div><div class="fn-n">{i:02d}</div><div class="fn-q">{escape(q)}</div>'
+        f'<div class="fn-a">{escape(a)}</div></div>'
+        for i, (q, a, _, _) in enumerate(FUNNEL, 1))
+    return (f'<div class="funnel">{cells}</div>'
+            f'<p class="dim">→ <a href="framework.html">The full framework</a> — '
+            f'what each step asks, and how I answered it</p>')
+
+
+def framework_page() -> str:
+    steps = []
+    for i, (q, a, body, read) in enumerate(FUNNEL, 1):
+        axes = ""
+        if i == 4:
+            axes = ('<div class="axes">' + "".join(
+                f"<div>{escape(x)}</div>" for x in SIX_AXES) + "</div>")
+        steps.append(
+            f'<div class="fstep"><div class="fs-n">{i:02d}</div><div class="fs-body">'
+            f'<h2>{escape(q)}</h2><p>{escape(body)}</p>{axes}'
+            f'<div class="fs-read"><span>MY READ</span>{escape(read)}</div></div></div>')
+    body = f"""<div class="eyebrow">HOW I GET FROM A THESIS TO A NAME</div>
+<h1>The funnel</h1>
+<p class="lede">Five steps. Each one narrows the field, and each one has to be answered before
+the next is worth asking.</p>
+{''.join(steps)}
+<p class="dim mt">Steps 1&ndash;3 are where most of the thinking happens and almost none of the
+writing. By the time a name reaches step 4 the interesting question is usually already settled —
+which is why a judgment on this site tends to be short, and the model behind it long.</p>"""
+    return shell(f"Framework — {SITE_TITLE}", body)
+
+
+def models_page(d: dict) -> str:
+    ms = d.get("models", [])
+    if ms:
+        rows = "".join(
+            f'<tr><td>{escape(m["name"])}</td>'
+            f'<td class="dim">{escape(m["purpose"])}</td>'
+            f'<td class="mono dim">{escape(m["shape"])}</td>'
+            f'<td class="mono"><a href="models/{escape(m["file"])}" download>'
+            f'.xlsx ↓ <span class="dim">{m["size_kb"]} KB</span></a></td></tr>'
+            for m in ms)
+        table = (f'<table class="tbl"><tr><th>Model</th><th>What it answers</th>'
+                 f'<th>Structure</th><th>File</th></tr>{rows}</table>')
+    else:
+        table = '<p class="empty">No workbooks published yet.</p>'
+    body = f"""<h1>Models</h1>
+<p class="lede">Built in Excel, by me. Download the workbook and pull the formulas apart if you
+want to check the arithmetic — every assumption in them is tied to a historical anchor and a
+signal that would falsify it.</p>
+{table}
+<div class="callout"><div class="eyebrow">A NOTE ON WHAT A MODEL IS FOR</div>
+<p>A DCF does not tell you what a company is worth. It tells you what you would have to believe
+for a given price to make sense. The three scenarios in these workbooks are not forecasts —
+they are three internally consistent sets of beliefs, priced out, so that the distance between
+them is visible.</p></div>"""
+    return shell(f"Models — {SITE_TITLE}", body)
+
+
 def index_page(d: dict) -> str:
     s = d["stats"]
     notes = d["notes"]
@@ -205,6 +303,22 @@ target {escape(money(lead['target'], lccy))}, {escape(lead['threshold'])}% thres
 <table class="tbl"><tr><th>Title</th><th>Kind</th><th>Written</th><th>Items</th></tr>
 {''.join(row(n, show_stance=False) for n in other)}</table>"""
 
+    ms = d.get("models", [])
+    if ms:
+        mrows = "".join(
+            f'<tr><td><a href="models.html">{escape(m["name"])}</a></td>'
+            f'<td class="dim">{escape(m["purpose"])}</td>'
+            f'<td class="mono dim">{escape(m["shape"])}</td>'
+            f'<td class="mono"><a href="models/{escape(m["file"])}" download>.xlsx ↓</a></td></tr>'
+            for m in ms)
+        models_sec = f"""<div class="eyebrow mt">MODELS</div>
+<p class="dim">Built in Excel, by me. Download the workbook and pull the formulas apart
+if you want to check the arithmetic.</p>
+<table class="tbl"><tr><th>Model</th><th>What it answers</th><th>Structure</th><th>File</th></tr>
+{mrows}</table>"""
+    else:
+        models_sec = ""
+
     body = f"""<div class="hero">
 <h1>{SITE_TITLE}</h1><div class="sub">{SITE_SUB}</div>
 </div>
@@ -215,6 +329,7 @@ that would prove me wrong. When the window closes, a script scores it.
 <p class="dim">This site is that record — plus the models and the machinery behind it.
 Everything I have written is on this page.</p>
 
+{_funnel_strip()}
 <div class="eyebrow mt">START HERE</div>
 {lead_html}
 <div class="startrow"><div class="k">→ <a href="method.html">Method — how the system works, and what it can't tell you yet</a></div>
@@ -222,6 +337,7 @@ Everything I have written is on this page.</p>
 <div class="startrow"><div class="k">→ <a href="coverage.html">Coverage — every name and theme on file</a></div>
 <div class="d">{s['companies']} tickers under active judgment, {s['notes']} notes, {s['open']} open assumptions.</div></div>
 
+{models_sec}
 <div class="eyebrow mt">JUDGMENTS · SCORED</div>
 <p class="dim">Each carries a price at writing, a threshold, and a deadline. A script settles them.</p>
 <table class="tbl"><tr><th>Name</th><th>Stance</th><th>Written</th><th>Assumptions</th></tr>
@@ -357,6 +473,8 @@ def main() -> int:
     (SITE / "index.html").write_text(index_page(d), encoding="utf-8")
     (SITE / "method.html").write_text(method_page(d), encoding="utf-8")
     (SITE / "coverage.html").write_text(coverage_page(d), encoding="utf-8")
+    (SITE / "framework.html").write_text(framework_page(), encoding="utf-8")
+    (SITE / "models.html").write_text(models_page(d), encoding="utf-8")
     jd = SITE / "judgments"
     jd.mkdir(exist_ok=True)
     td = SITE / "translations"
@@ -381,7 +499,8 @@ def main() -> int:
                     print(f"  ! {note['slug']} 的中文改过了，英文版是旧的")
             except Exception:
                 pass
-    print(f"生成 index / method / coverage + {n} 篇中文页 + {en_n} 篇英文页")
+    print(f"生成 index / framework / models / method / coverage "
+          f"+ {n} 篇中文页 + {en_n} 篇英文页")
     if stale:
         print(f"  有 {stale} 篇英文过期，跑 python scripts/translate.py 更新")
     elif en_n < n:

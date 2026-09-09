@@ -2,11 +2,12 @@
  "stats": {
   "notes": 12,
   "companies": 4,
-  "open": 55,
+  "open": 53,
   "confirmed": 0,
   "falsified": 0,
   "reports": 0,
-  "updated": "2026-09-09"
+  "models": 2,
+  "updated": "2026-09-10"
  },
  "notes": [
   {
@@ -147,7 +148,7 @@
     ],
     [
      "关键数据与验证信号",
-     "<!-- [ ] 未验证 · [x] 验证通过 · [!] 已证伪，比如 - [!] 某某假设 -->\n- [ ] 各家模型API的缓存写入窗口定价是否增加。\n- [ ] 平均输出token数的增速是否保持。\n- [ ] 台积电CoWoS的实际月产能是否快速释放。\n- [ ] 1d节点的量产时点，以及它是否采用4F²。\n- [ ] 资本开支方向是否转向。\n- [ ] 客户端（而非厂商端）库存是否延续紧张状态。\n- [ ] \n- [ ] \n- [ ] \n- [ ]"
+     "<!-- [ ] 未验证 · [x] 验证通过 · [!] 已证伪，比如 - [!] 某某假设 -->\n- [ ] 各家模型API的缓存写入窗口定价是否增加。\n- [ ] 平均输出token数的增速是否保持。\n- [ ] 台积电CoWoS的实际月产能是否快速释放。\n- [ ] 1d节点的量产时点，以及它是否采用4F²。\n- [ ] 资本开支方向是否转向。\n- [ ] 客户端（而非厂商端）库存是否延续紧张状态。"
     ],
     [
      "风险与证伪条件",
@@ -165,15 +166,13 @@
      "台积电CoWoS的实际月产能是否快速释放。",
      "1d节点的量产时点，以及它是否采用4F²。",
      "资本开支方向是否转向。",
-     "客户端（而非厂商端）库存是否延续紧张状态。",
-     "- [ ] ",
-     "- [ ] "
+     "客户端（而非厂商端）库存是否延续紧张状态。"
     ],
     "confirmed": [],
     "falsified": []
    },
-   "chars": 3996,
-   "weight": 199
+   "chars": 3968,
+   "weight": 159
   },
   {
    "file": "2026-08-20_巴菲特1998年演讲.md",
@@ -770,6 +769,26 @@
    "last": "",
    "count": 0,
    "files": []
+  }
+ ],
+ "models": [
+  {
+   "slug": "mu-dcf",
+   "name": "Micron — three-scenario DCF",
+   "purpose": "What MU is worth across the range of memory pricing outcomes",
+   "shape": "3 scenarios",
+   "file": "files/mu-dcf.xlsx",
+   "filename": "MU_DCF.xlsx",
+   "size_kb": 206
+  },
+  {
+   "slug": "sndk-dcf-2",
+   "name": "SanDisk — three-scenario DCF",
+   "purpose": "What SNDK is worth if the NAND price floor holds, softens, or breaks",
+   "shape": "3 scenarios · ~800 live formulas",
+   "file": "files/sndk-dcf-2.xlsx",
+   "filename": "SNDK_DCF (2).xlsx",
+   "size_kb": 202
   }
  ]
 }
