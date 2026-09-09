@@ -1,0 +1,23 @@
+{
+ "title_en": "Position Management",
+ "sections": [
+  [
+   "What I got right",
+   "<ol><li>AI remains the main thread of this bull market; short-term noise should be ignored.</li><li>The underlying logic for memory hasn't changed. What AI development lacks most is compute, and what limits compute the most is memory (the memory wall). Memory has shifted from a strong-cyclical commodity into an AI strategic material (even though its commodity properties may not have changed). All AI hardware is really a product of this AI supercycle, and since it's all cyclical, it all faces the same systemic risk. Memory's valuation should be re-rated upward, especially given that future earnings persistence could rise substantially — that is, the floor has been lifted up to the peak level of past cycles.</li></ol>"
+  ],
+  [
+   "What I got wrong",
+   "<ol><li>Global equity market correlation risk. Deleveraging in Korea triggered violent swings in June and July, cutting many tech stocks (including memory names) in half — the magnitude and speed of the drop exceeded what I imagined.</li><li>The valuation safety margin on AI tech stocks was too thin — share prices had likely priced in far too much optimism, so bad macro news (even baseless rumors) could trigger an unwarranted sell-off.</li><li>I didn't factor in the macro environment at all.</li></ol>"
+  ],
+  [
+   "The common cause behind the misses",
+   "<ol><li>I over-focused on fundamentals and nearly ignored every other factor — the macro environment, global equity market correlation, and external leverage ratios.</li><li>I lacked a margin-of-safety mindset, leaving too thin a profit cushion.</li></ol>"
+  ],
+  [
+   "What I'm changing",
+   "<ul class=\"checks\"><li class=\"open\"><span class=\"mk\">☐</span>No longer use any leveraged instruments (margin financing or leveraged ETFs).</li><li class=\"open\"><span class=\"mk\">☐</span>No longer add to positions using unrealized gains.</li><li class=\"open\"><span class=\"mk\">☐</span>The initial entry must not exceed one-third of the intended total position.</li><li class=\"open\"><span class=\"mk\">☐</span>Reinforce margin-of-safety discipline — if the price hasn't reached a safe zone, I'd rather miss the move.</li><li class=\"open\"><span class=\"mk\">☐</span></li></ul>"
+  ]
+ ],
+ "hash": "7b934a4ac8032b86",
+ "slug": "2026-08-15-note"
+}

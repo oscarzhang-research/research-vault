@@ -1,0 +1,19 @@
+{
+ "title_en": "Thoughts on the Memory Sector and Latest Developments",
+ "sections": [
+  [
+   "Thesis in one sentence",
+   "<p>I've never quantified how large the memory supply–demand gap actually is before. This time I'll walk through a rough quantified result from financial modeling, as a reference point. Meanwhile, Nvidia's latest earnings once again confirm how critical and urgent the memory situation is: supply constraints are forcing Nvidia's FY28 revenue growth to be capped at 70%.</p>"
+  ],
+  [
+   "Core logic and latest industry developments",
+   "<ol><li>Nvidia's earnings</li><li>Quantifying the memory supply–demand gap</li><li>SanDisk's capacity expansion</li><li>CXMT's technology breakthrough</li></ol>"
+  ],
+  [
+   "Key data and tracking signals",
+   "<!-- [ ] not yet verified · [x] verified · [!] falsified, e.g. - [!] some assumption --><ul class=\"checks\"><li class=\"open\"><span class=\"mk\">☐</span></li></ul>"
+  ]
+ ],
+ "hash": "04a7f10c1c446913",
+ "slug": "2026-08-27-memory"
+}

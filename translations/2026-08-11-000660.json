@@ -1,0 +1,27 @@
+{
+ "title_en": "SK hynix",
+ "sections": [
+  [
+   "Thesis in one sentence",
+   "<p>The market is severely underestimating SK hynix's value. <em>The reasoning here is largely the same as in the other three memory-company notes I've written — the only difference is that SK hynix carries a higher HBM market share, which gives it more stable, more visible revenue and a wider moat. As the market re-prices HBM, SK hynix's revenue and operating profit could surge even further.</em></p>"
+  ],
+  [
+   "Core logic",
+   "<p>1. Let me first lay out the shared core logic, since I've already written three similar notes and the underlying logic doesn't change: a likely long-term supply–demand imbalance, plus HBM's high barriers to entry (no new competitors), plus long-term agreements sharply lifting the cycle trough, plus an extremely clear, explosive earnings outlook for 2026–2027.</p><p>2. SK hynix holds close to 60% of the HBM market, and that is its biggest moat relative to the other memory companies. It means a substantial share of its revenue is tied to the top-five hyperscalers in the U.S., which significantly reduces its revenue's exposure to broader market swings — unlike consumer electronics. That said, this also carries real risk, including whether SK hynix can sustain close to 60% HBM market share over the long run, and whether its profit ceiling at peak might actually be lower than expected. <em>My own caveat: in recent quarters HBM's per-bit margin has actually trailed traditional DRAM, and because HBM is typically tied to long-term agreements, its upside is capped.</em></p><p>3. I estimate SK hynix's FY2026 revenue at around ₩330 trillion, with operating profit around ₩250 trillion, and FY2027 operating profit around ₩375 trillion. FY2026 revenue and operating profit are already extremely clear at this point. For FY2027 I'm assuming 50% growth — that is, a 15% increase in shipments combined with a 30% increase in contract prices — which doesn't front-load an overly optimistic scenario and is a fairly rational estimate. Applying a 10x multiple to FY2027 operating profit gives a market cap of roughly $2.2 trillion, or a share price of around ₩4.15 million. Factoring in the Korean discount, my target price comes to roughly ₩3,800,000. Adding another 15% margin of safety on top, my final target price for SK hynix is around ₩3,200,000. (I've covered the detailed valuation methodology in my other notes; I'll add a full Excel valuation model later.)</p>"
+  ],
+  [
+   "Key assumptions and tracking signals",
+   "<ul class=\"checks\"><li class=\"open\"><span class=\"mk\">☐</span>Whether SK hynix can sustain its current close-to-60% HBM market share</li><li class=\"open\"><span class=\"mk\">☐</span>Whether SK hynix will subsequently roll out a detailed shareholder return plan</li><li class=\"open\"><span class=\"mk\">☐</span>Whether SK hynix's long-term agreement coverage ratio and committed volumes can keep rising</li><li class=\"open\"><span class=\"mk\">☐</span>Whether the Korean stock market can gradually stabilize (deleveraging caused major volatility back in July)</li><li class=\"open\"><span class=\"mk\">☐</span>Whether the U.S. and Korea can reach agreement on how memory profits should be distributed</li></ul>"
+  ],
+  [
+   "What would prove me wrong",
+   "<p>What would make me admit I'm wrong:</p><ol><li>SK hynix's HBM market share falls below 50%</li><li>SK hynix fails to return 50% or more of its FCF to shareholders going forward</li><li>SK hynix's long-term agreement coverage ratio and committed volumes fail to keep rising</li><li>Korea's stock market deleveraging process doesn't conclude and volatility remains severe</li><li>The U.S. and Korea remain unable to reach agreement on memory profit distribution</li></ol>"
+  ],
+  [
+   "Where I differ from consensus",
+   "<p>What the market thinks: SK hynix is a traditional cyclical stock.</p><p>Why I differ: memory is a strategic resource of the AI infrastructure era, and SK hynix is the core player holding the single most important strategic resource of that era — it's the HBM leader. Combined with a new industry ecosystem the memory sector hasn't seen in years, it deserves a higher valuation that breaks from the traditional cyclical-stock valuation framework.</p>"
+  ]
+ ],
+ "hash": "e765790cc662147b",
+ "slug": "2026-08-11-000660"
+}

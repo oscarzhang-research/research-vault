@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Method — Baichuan (Oscar) Zhang</title>
+<link rel="stylesheet" href="assets/style.css"></head>
+<body><div class="wrap">
+<header class="top">
+  <a class="home" href="index.html">Baichuan (Oscar) Zhang</a>
+  <nav><a href="coverage.html">Coverage</a><a href="method.html">Method</a>
+  <a href="https://github.com/oscarzhang-research">GitHub</a></nav>
+</header>
+<h1>Method</h1>
+<p class="lede">How the record works, what it can prove today, and what it cannot.</p>
+
+<div class="eyebrow mt">THE RULE THAT MATTERS</div>
+<p>When I open a thesis I have to commit four numbers before I am allowed to save the file:
+the price at that moment, the percentage move that decides right or wrong, how long the window
+runs, and my conviction. Then I write the conditions that would prove me wrong.
+<strong>After that I don't touch the file.</strong> A script reads the price history and scores it.</p>
+
+<div class="eyebrow mt">SCORING</div>
+<p>The script scans every trading day inside the window using the intraday high and low, not the
+close — a thesis that hits its target midday counts, and one that breaches its stop counts against
+me even if it closes flat. Whichever side is touched first settles the call and locks it; later
+price action cannot rescue or spoil it. If neither side is touched by the end of the window, it is
+a draw. For a neutral call the logic inverts: touching either bound means I was wrong about it
+being quiet.</p>
+
+<div class="eyebrow mt">ASSUMPTIONS HAVE THREE STATES</div>
+<ul class="checks">
+<li class="open"><span class="mk">☐</span>Open — still tracking</li>
+<li class="done"><span class="mk">☑</span>Confirmed</li>
+<li class="false"><span class="mk">☒</span>Falsified — gets its own page; the original note is not edited</li>
+</ul>
+
+<div class="callout">
+<div class="eyebrow">WHAT THIS RECORD CANNOT TELL YOU YET</div>
+<p>The system went live in August 2026. As of 2026-09-09 there are
+<strong>55 open assumptions and 0 resolved</strong>.
+The first real batch resolves in November. There is no hit rate worth quoting yet, and I am not
+going to quote one. What is on this site is the method and the discipline — not a track record.</p>
+</div>
+
+<div class="eyebrow mt">THE STACK</div>
+<p><strong>memory-desk</strong> — a news agent I built that pulls sources daily and scores each
+item against the open assumptions above.<br>
+<strong>The ledger</strong> — this record. Python, local files, no external service.<br>
+<strong>Models</strong> — where a name is worth the work, a three-scenario DCF in Excel with every
+assumption traced to a historical anchor and a falsification signal.</p>
+
+<div class="eyebrow mt">ON AI, PLAINLY</div>
+<p>I use AI heavily — for retrieval, for drafting, for building the tooling behind this site, and
+for translating these pages out of Chinese. What it does not do is choose which question to work
+on, decide which assumptions are load-bearing, set the parameter ranges in the models, or decide
+when I was wrong. Scarce in 2026 is not the ability to generate a research report. It is the
+ability to find the error in one.</p>
+
+<div class="eyebrow mt">WHY THE PRIMARY RESEARCH IS IN CHINESE</div>
+<p>The memory supply chain is Korean, Japanese, Taiwanese and Chinese. Korean-language disclosure,
+CXMT capacity reporting and Chinese-language supply-chain coverage all carry information that
+reaches English-language research late or not at all. I read those sources directly and think in
+Chinese while doing it. Every page here has an English version; the Chinese original is one toggle
+away and is the version I actually wrote.</p>
+<footer><p>baichuanzhang273@gmail.com · <a href="https://github.com/oscarzhang-research">GitHub</a></p>
+<p class="dim">Nothing here is investment advice. Primary research written in Chinese.</p>
+</footer></div></body></html>

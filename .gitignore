@@ -1,0 +1,12 @@
+# 私仓的东西永远不该出现在这里，加一层保险
+知识库/
+*.csv
+*.xlsx
+!models/*.xlsx
+.DS_Store
+__pycache__/
+*.pyc
+
+# API key 绝不能进 git
+.env
+*.key
