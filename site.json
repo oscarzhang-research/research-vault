@@ -1,13 +1,13 @@
 {
  "stats": {
-  "notes": 13,
+  "notes": 12,
   "companies": 4,
-  "open": 61,
+  "open": 60,
   "confirmed": 0,
   "falsified": 0,
   "reports": 0,
   "models": 3,
-  "updated": "2026-09-10"
+  "updated": "2026-10-07"
  },
  "notes": [
   {
@@ -80,48 +80,6 @@
    },
    "chars": 6664,
    "weight": 206
-  },
-  {
-   "file": "2026-09-08_对赌.md",
-   "slug": "2026-09-08-note",
-   "subject_en": "",
-   "ccy": "$",
-   "type": "读书",
-   "type_cn": "读书",
-   "type_en": "Reading",
-   "date": "2026-09-08",
-   "title": "对赌",
-   "title_en": "Notes on 对赌 (Betting on Growth)",
-   "companies": [],
-   "tickers": [],
-   "stance": "",
-   "stance_en": "",
-   "conviction": "",
-   "horizon": "",
-   "price": "",
-   "target": "",
-   "threshold": "",
-   "tags": [],
-   "status": "",
-   "sections": [
-    [
-     "与投资的联系",
-     "这个观点能落到哪笔具体的决策上："
-    ],
-    [
-     "存疑与待验证",
-     "- [ ]"
-    ]
-   ],
-   "checks": {
-    "open": [
-     " "
-    ],
-    "confirmed": [],
-    "falsified": []
-   },
-   "chars": 67,
-   "weight": 20
   },
   {
    "file": "2026-08-27_存储行业思考与最新动态.md",
@@ -863,13 +821,13 @@
    "size_kb": 202
   },
   {
-   "slug": "the-arithmetic-of-the-gap-v4-0-memory-supply-demand-model-inventory-exhaustion-edition-1",
+   "slug": "the-arithmetic-of-the-gap-v4-2-memory-supply-demand-model-recalibrated-edition",
    "name": "The arithmetic of the gap",
    "purpose": "Bit-level supply and demand — how wide the shortage is, and for how long",
    "shape": "supply–demand bridge",
-   "file": "files/the-arithmetic-of-the-gap-v4-0-memory-supply-demand-model-inventory-exhaustion-edition-1.xlsx",
-   "filename": "The Arithmetic of the Gap v4.0 - Memory Supply-Demand Model (Inventory-Exhaustion Edition) (1).xlsx",
-   "size_kb": 173
+   "file": "files/the-arithmetic-of-the-gap-v4-2-memory-supply-demand-model-recalibrated-edition.xlsx",
+   "filename": "The_Arithmetic_of_the_Gap_v4.2_-_Memory_Supply-Demand_Model_Recalibrated_Edition.xlsx",
+   "size_kb": 236
   }
  ]
 }
