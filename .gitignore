@@ -2,7 +2,7 @@
 知识库/
 *.csv
 *.xlsx
-!models/*.xlsx
+!models/files/*.xlsx
 .DS_Store
 __pycache__/
 *.pyc
